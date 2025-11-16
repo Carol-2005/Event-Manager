@@ -1,15 +1,15 @@
-const express=require('express');
-const cors=require('cors');
+import express from "express";
+import cors from "cors";
+import eventRoutes from "./routes/eventRoutes.js";
 
-const app=express();
+const app = express();
+
 app.use(cors());
 app.use(express.json());
 
+// Routes
+app.use("/events", eventRoutes);
 
-app.get('/',(req,res)=>{
-    return res.send('Hello from the backend!');
-})
-
-app.listen(5000,()=>{
-    console.log('Server is running on http://localhost:5000');
-})
+app.listen(5000, () => {
+  console.log("Server is running on http://localhost:5000");
+});
